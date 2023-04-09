@@ -1,10 +1,10 @@
-from flask import Flask
+from flask import Flask, render_tamplate
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello_k():
-    return "<p>kjjklkj<p/>"
+    return render_tamplate("home.html")
 
 
 if __name__ == "__main__":
