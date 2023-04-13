@@ -2,7 +2,6 @@ from flask import Flask, render_template, jsonify
 from databases import  load_jobs_from_db
 app = Flask(__name__)
 
-
 @app.route("/")
 def hello_k():
     jobs_list = load_jobs_from_db()
