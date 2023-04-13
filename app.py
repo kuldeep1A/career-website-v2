@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify
-
+from sqlalchemy import create_engine, text
 app = Flask(__name__)
 JOBS = [
     {   
@@ -27,6 +27,14 @@ JOBS = [
         'salary': '$ 120,000'
     }
 ]
+with engine.connect() as conn:
+    result = conn.execute(text("select * from jobs"))
+    result_dicts = []
+    for row in result.all():
+        result_dicts.append(row._asdict())
+
+
+
 @app.route("/")
 def hello_k():
     return render_template("home.html", jobs=JOBS)
